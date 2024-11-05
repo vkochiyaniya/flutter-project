@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "651316618775",
+    "project_id": "pshopapp-ec5db",
+    "storage_bucket": "pshopapp-ec5db.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651316618775:android:8754c6cc3660b101629e52",
+        "android_client_info": {
+          "package_name": "com.example.pshopapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ-bh7Z6Zh-qTaHy87IZZHFO6Uc8HD5Og"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
