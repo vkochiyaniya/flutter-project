@@ -34,7 +34,7 @@ class _SignInState extends State<SignIn> {
                const SizedBox(height: 32,),
                Center(
                 child: ClipRRect(borderRadius: BorderRadius.circular(20),
-                child: Image.asset("assets/banana_plant.png", height: 80, width: 80,),
+                child: Image.asset("assets/categories/logo.png", height: 80, width: 80,),
                 ),
                ),
                const SizedBox(height: 32,),
