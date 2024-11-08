@@ -2,12 +2,12 @@ import 'package:pshopapp/models/categoriesmodel.dart';
 import 'package:pshopapp/models/productmodel.dart';
 
 class FakeData {
-  static List<CategoryModel>categories = [
-    CategoryModel(name: "Air Purifying", image: "assets/categories/c1.png"),
-    CategoryModel(name: "Low Light", image: "assets/categories/c2.png"),
-    CategoryModel(name: "Succulents and Cacti", image: "assets/categories/c3.png"),
-    CategoryModel(name: "Flowering", image: "assets/categories/c4.png"),
-    CategoryModel(name: "Pet Friendly", image: "assets/categories/c5.png")
+  static List<Category>categories = [
+    Category(name: "Air Purifying", image: "assets/categories/c1.png"),
+    Category(name: "Low Light", image: "assets/categories/c2.png"),
+    Category(name: "Succulents and Cacti", image: "assets/categories/c3.png"),
+    Category(name: "Flowering", image: "assets/categories/c4.png"),
+    Category(name: "Pet Friendly", image: "assets/categories/c5.png")
     
   ];
 
