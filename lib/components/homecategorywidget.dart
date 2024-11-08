@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pshopapp/components/errortext.dart';
+import 'package:pshopapp/components/errorwidget.dart';
 import 'package:pshopapp/controllers/categorycontroller.dart';
 import 'package:pshopapp/pages/loadingScreen.dart';
 
