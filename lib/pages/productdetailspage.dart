@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pshopapp/components/realatedproductswidget.dart';
 import 'package:pshopapp/models/productmodel.dart';
 
 class ProductDetailsPage extends StatelessWidget {
@@ -61,7 +62,24 @@ class ProductDetailsPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16,),
-            Center(child: SizedBox(height: 50, width: 250 ,child: ElevatedButton(onPressed: (){}, child: Text("Add To Cart"),),)),
+            Center(child: SizedBox(height: 50, width: 250 ,child: ElevatedButton(onPressed: (){}, child: Text("Add To Cart"),),),),
+
+             const SizedBox(
+              height: 16,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+                Text("Realated Plants",
+                    style: TextStyle(color: Colors.green, fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Text("See All", 
+                    style: TextStyle(color: Colors.green, fontSize: 15, fontWeight: FontWeight.bold),
+                    )
+              ],),
+            ),
+            SizedBox(height: 16,),
+            RealatedProductsWidget(categoryname: product.categoryname.toString(),)
           ],
         ),
       ),

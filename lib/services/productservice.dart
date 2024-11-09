@@ -44,5 +44,17 @@ class ProductService {
     });
   }
 
+  Stream<List<Product>>getRealatedProducts(String categoryname){
+    return _products.where("categoryname", isEqualTo: categoryname)
+    .snapshots()
+    .map((event){
+      List<Product>products=[];
+      for (var doc in event.docs){
+        products.add(Product.fromMap(doc.data()as Map<String, dynamic>));
+      }
+      return products;
+    });
+  }
+
   
 }

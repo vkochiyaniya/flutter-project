@@ -36,7 +36,7 @@ class MainPage extends StatelessWidget {
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Products",
+                  Text("Plants",
                   style: TextStyle(color: Colors.green, fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   Text("See All", 
