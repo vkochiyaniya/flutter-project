@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class ProductModel {
@@ -5,20 +6,22 @@ class ProductModel {
   String name;
   String image;
   double price;
-  double oldPrice;
+  double oldprice;
   bool? isAvailable;
   String description;
-  String? Categoryname;
+  String? categoryname;
+  int? qty;
 
   ProductModel({
     required this.productId,
     required this.name,
     required this.image,
     required this.price,
-    required this.oldPrice,
+    required this.oldprice,
     this.isAvailable,
     required this.description,
-    this.Categoryname,
+    this.categoryname,
+    this.qty,
   });
 
   ProductModel copyWith({
@@ -26,20 +29,22 @@ class ProductModel {
     String? name,
     String? image,
     double? price,
-    double? oldPrice,
+    double? oldprice,
     bool? isAvailable,
     String? description,
-    String? Categoryname,
+    String? categoryname,
+    int? qty,
   }) {
     return ProductModel(
       productId: productId ?? this.productId,
       name: name ?? this.name,
       image: image ?? this.image,
       price: price ?? this.price,
-      oldPrice: oldPrice ?? this.oldPrice,
+      oldprice: oldprice ?? this.oldprice,
       isAvailable: isAvailable ?? this.isAvailable,
       description: description ?? this.description,
-      Categoryname: Categoryname ?? this.Categoryname,
+      categoryname: categoryname ?? this.categoryname,
+      qty: qty ?? this.qty,
     );
   }
 
@@ -49,23 +54,25 @@ class ProductModel {
       'name': name,
       'image': image,
       'price': price,
-      'oldPrice': oldPrice,
+      'oldprice': oldprice,
       'isAvailable': isAvailable,
       'description': description,
-      'Categoryname': Categoryname,
+      'categoryname': categoryname,
+      'qty': qty,
     };
   }
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      productId: map['productId'] as String? ?? '',
-      name: map['name'] as String? ?? '',
-      image: map['image'] as String? ?? '',
-      price: (map['price'] as num?)?.toDouble() ?? 0.0,
-      oldPrice: (map['oldPrice'] as num?)?.toDouble() ?? 0.0,
-      isAvailable: map['isAvailable'] as bool? ?? true,
-      description: map['description'] as String? ?? '',
-      Categoryname: map['Categoryname'] as String? ?? 'Uncategorized',
+      productId: map['productId'] as String,
+      name: map['name'] as String,
+      image: map['image'] as String,
+      price: (map['price'] as num).toDouble(),
+      oldprice: (map['oldprice'] as num).toDouble(),
+      isAvailable: map['isAvailable'] != null ? map['isAvailable'] as bool : null,
+      description: map['description'] as String,
+      categoryname: map['categoryname'] != null ? map['categoryname'] as String : null,
+      qty: map['qty'] != null ? map['qty'] as int : null,
     );
   }
 
@@ -76,33 +83,35 @@ class ProductModel {
 
   @override
   String toString() {
-    return 'ProductModel(productId: $productId, name: $name, image: $image, price: $price, oldPrice: $oldPrice, isAvailable: $isAvailable, description: $description, Categoryname: $Categoryname)';
+    return 'ProductModel(productId: $productId, name: $name, image: $image, price: $price, oldprice: $oldprice, isAvailable: $isAvailable, description: $description, categoryname: $categoryname, qty: $qty)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-
+  
     return other is ProductModel &&
-        other.productId == productId &&
-        other.name == name &&
-        other.image == image &&
-        other.price == price &&
-        other.oldPrice == oldPrice &&
-        other.isAvailable == isAvailable &&
-        other.description == description &&
-        other.Categoryname == Categoryname;
+      other.productId == productId &&
+      other.name == name &&
+      other.image == image &&
+      other.price == price &&
+      other.oldprice == oldprice &&
+      other.isAvailable == isAvailable &&
+      other.description == description &&
+      other.categoryname == categoryname &&
+      other.qty == qty;
   }
 
   @override
   int get hashCode {
     return productId.hashCode ^
-        name.hashCode ^
-        image.hashCode ^
-        price.hashCode ^
-        oldPrice.hashCode ^
-        isAvailable.hashCode ^
-        description.hashCode ^
-        Categoryname.hashCode;
+      name.hashCode ^
+      image.hashCode ^
+      price.hashCode ^
+      oldprice.hashCode ^
+      isAvailable.hashCode ^
+      description.hashCode ^
+      categoryname.hashCode ^
+      qty.hashCode;
   }
 }

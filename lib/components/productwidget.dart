@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pshopapp/components/errorwidget.dart';
 import 'package:pshopapp/pages/loadingscreen.dart';
 import 'package:pshopapp/controllers/productcontroller.dart';
+import 'package:pshopapp/pages/productdetailspage.dart';
 
 class ProductWidget extends ConsumerWidget {
   const ProductWidget({super.key});
@@ -27,65 +28,72 @@ class ProductWidget extends ConsumerWidget {
 
             return Padding(
               padding: const EdgeInsets.all(2),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                elevation: 1,
-                child: Container(
-                  height: 180,
-                  width: 180,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsPage(),
+                  settings: RouteSettings(arguments: data[index])
+                  ));
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Column(
-                    children: [
-                      // Product Image
-                      Image.network(
-                        product.image!,
-                        fit: BoxFit.fitHeight,
-                        height: 150,
-                      ),
-                      Center(
-                        child: Text(
-                          product.name!,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
+                  elevation: 1,
+                  child: Container(
+                    height: 180,
+                    width: 180,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      children: [
+                        // Product Image
+                        Image.network(
+                          product.image!,
+                          fit: BoxFit.fitHeight,
+                          height: 150,
+                        ),
+                        Center(
+                          child: Text(
+                            product.name!,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 16),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            // Current Price
-                            Text(
-                              "\$${product.price}",
-                              style: const TextStyle(
-                                fontSize: 20,
-                                color: Colors.green,
-                                fontWeight: FontWeight.bold,
+                        const SizedBox(height: 16),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              // Current Price
+                              Text(
+                                "\$${product.price}",
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            // Old Price (Strikethrough)
-                            Text(
-                              "\$${product.oldPrice}",
-                              style: const TextStyle(
-                                fontSize: 20,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.lineThrough,
+                              // Old Price (Strikethrough)
+                              Text(
+                                "\$${product.oldprice}",
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.lineThrough,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
