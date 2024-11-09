@@ -6,7 +6,7 @@ class ProductDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final product = ModalRoute.of(context)!.settings.arguments as ProductModel;
+    final product = ModalRoute.of(context)!.settings.arguments as Product;
 
     return Scaffold(
       body: SingleChildScrollView(

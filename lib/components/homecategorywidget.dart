@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pshopapp/components/errorwidget.dart';
 import 'package:pshopapp/controllers/categorycontroller.dart';
 import 'package:pshopapp/pages/loadingScreen.dart';
+import 'package:pshopapp/pages/productsbycategory.dart';
 
 class HomeCategoryWidget extends ConsumerWidget {
   const HomeCategoryWidget({super.key});
@@ -27,32 +28,37 @@ class HomeCategoryWidget extends ConsumerWidget {
                   borderRadius: BorderRadius.circular(16),
                   color: Colors.grey[200],
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.network(
-                        data[index].image ?? '',
-                        fit: BoxFit.cover,
-                        height: 60,
-                        width: 60,
-                      ),
-                    ),
-                    const SizedBox(height: 8), 
-                    Flexible(
-                      child: Text(
-                        data[index].name ?? '',
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProductsByCategoryPage(categoryname: data[index].name.toString(),)));
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          data[index].image ?? '',
+                          fit: BoxFit.cover,
+                          height: 60,
+                          width: 60,
                         ),
-                        overflow: TextOverflow.ellipsis, 
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 8), 
+                      Flexible(
+                        child: Text(
+                          data[index].name ?? '',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          overflow: TextOverflow.ellipsis, 
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );

@@ -17,19 +17,32 @@ class ProductService {
 
   CollectionReference get _products => _firestore.collection(FirebaseConstants.products);
 
-  Stream<List<ProductModel>>getProducts(){
+  Stream<List<Product>>getProducts(){
     return _products.snapshots().map((event) {
-      List<ProductModel>products=[];
+      List<Product>products=[];
       for (var doc in event.docs){
-        products.add(ProductModel.fromMap(doc.data() as Map<String, dynamic>));
+        products.add(Product.fromMap(doc.data() as Map<String, dynamic>));
       }
       return products;
     });
   }
 
-  Stream<ProductModel>getProductById(String productId){
+  Stream<Product>getProductById(String productId){
     return _products.doc(productId).snapshots()
-    .map((event) => ProductModel.fromMap((event.data()as Map<String, dynamic>))); 
+    .map((event) => Product.fromMap((event.data()as Map<String, dynamic>))); 
   }
 
+  Stream<List<Product>>getProductsByCategory(String categoryname){
+    return _products.where("categoryname", isEqualTo: categoryname)
+    .snapshots()
+    .map((event){
+      List<Product>products=[];
+      for (var doc in event.docs){
+        products.add(Product.fromMap(doc.data()as Map<String, dynamic>));
+      }
+      return products;
+    });
+  }
+
+  
 }
