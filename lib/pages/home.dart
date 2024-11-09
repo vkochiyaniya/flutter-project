@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              color: Colors.blue,
+              color: Colors.green,
               size: 30,
             ),
             label: 'Home'
@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.favorite,
-              color: Colors.blue,
+              color: Colors.green,
               size: 30,
             ),
             label: 'Favourite'
@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.shopping_bag_outlined,
-              color: Colors.blue,
+              color: Colors.green,
               size: 30,
             ),
             label: 'Cart'
@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              color: Colors.blue,
+              color: Colors.green,
               size: 30,
             ),
             label: 'Profile'

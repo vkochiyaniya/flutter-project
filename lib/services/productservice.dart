@@ -56,5 +56,20 @@ class ProductService {
     });
   }
 
+  Stream<List<Product>> searchProducts(String search) {
+    return _products
+        .orderBy("name")
+        .startAt([search])
+        .endAt([search + '\uf8ff'])
+        .limit(10)
+        .snapshots()
+        .map((event) {
+          List<Product> products = [];
+          for (var doc in event.docs) {
+            products.add(Product.fromMap(doc.data() as Map<String, dynamic>));
+          }
+          return products;
+        });
+  }
   
 }
