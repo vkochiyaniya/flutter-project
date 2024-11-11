@@ -4,6 +4,7 @@ import 'package:pshopapp/views/mainpage.dart';
 import 'package:pshopapp/views/productwishlistpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pshopapp/views/settings.dart';
 
 class Home extends ConsumerStatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -21,12 +22,11 @@ class _HomeState extends ConsumerState<Home> {
   }
 
   List<Widget> pages = [
-    const MainPage(),
+     const MainPage(),
     const CategoriesPage(),
     const ProductsWishListPage(),
     const CartPage(),
-    const CartPage(),
-    //SettingsPage()
+    SettingsPage()
   ];
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,7 @@
 import 'package:pshopapp/controllers/authcontroller.dart';
 import 'package:pshopapp/controllers/cartcontroller.dart';
 import 'package:pshopapp/controllers/productcontroller.dart';
+import 'package:pshopapp/controllers/productwishlistcontroller.dart';
 import 'package:pshopapp/views/productdetails.dart';
 import 'package:pshopapp/widgets/errortext.dart';
 import 'package:pshopapp/widgets/loader.dart';
@@ -20,6 +21,7 @@ class Products_Widget extends ConsumerWidget {
     final products = ref.watch(getProductsProvider);
     final currentUser = FirebaseAuth.instance.currentUser;
     final userData = ref.watch(getUserDataProvider(currentUser!.uid));
+     final propertiesController=Get.put(ProductWishListController());
     return
     userData.when(data: (userData){
       return products.when(
@@ -58,7 +60,7 @@ class Products_Widget extends ConsumerWidget {
                             Expanded(
                               child: Positioned(bottom: 0,left: 0,child: GestureDetector(
                                 onTap: (){
-                                 // propertiesController.addProduct(product, context);
+                                  propertiesController.addProduct(product, context);
                                
                                 },
                                 child:const Icon(

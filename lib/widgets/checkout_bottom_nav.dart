@@ -20,7 +20,7 @@ class CheckOutBottomNav extends ConsumerWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                    //  Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckOutScreen()));
+                     // Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckOutScreen()));
                     },
                     child: Container(
                       height: 50,
