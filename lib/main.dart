@@ -1,3 +1,4 @@
+import 'package:pshopapp/apikeys/apikey.dart';
 import 'package:pshopapp/controllers/authcontroller.dart';
 import 'package:pshopapp/models/product.dart';
 import 'package:pshopapp/models/user.dart';
@@ -9,9 +10,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:routemaster/routemaster.dart';
-
 void main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
@@ -19,16 +20,24 @@ void main() async {
     await Hive.initFlutter();
     Hive.registerAdapter(ProductAdapter());
     await ProductWishListRepository.openBox();
+    Stripe.publishableKey = APIKey.PUBLISHABLEkEY;
+    Stripe.merchantIdentifier = "vishal kochiyaniya";
+    await Stripe.instance.applySettings();
 
     runApp(ProviderScope(child: MyApp()));
   } catch (e) {
-    runApp(ProviderScope(child: Text(e.toString())));
+    runApp(ProviderScope(
+      child: Directionality(
+        textDirection: TextDirection.ltr, // Set appropriate text direction
+        child: Text(e.toString()),
+      ),
+    ));
   }
 }
 
 class MyApp extends ConsumerWidget {
   UserModel? userModel;
-
+  
   getData(WidgetRef ref, User data) async {
     userModel = await ref.watch(authControllerProvider.notifier).getUserData(data.uid).first;
     ref.read(userProvider.notifier).update((state) => userModel);
@@ -52,7 +61,7 @@ class MyApp extends ConsumerWidget {
         routeInformationParser: const RoutemasterParser(),
       ),
       error: (error, stackTrace) => Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr, // Ensure a text direction is specified
         child: ErrorText(error: error.toString()),
       ),
       loading: () => const Loader(),

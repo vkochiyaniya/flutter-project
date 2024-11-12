@@ -12,7 +12,7 @@ class CategoriesWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       width: double.infinity,
-      height: 130, // Adjusted height for consistency with the sample
+      height: 130, 
       child: ref.watch(categoriesProvider).when(
         data: (data) => ListView.builder(
           shrinkWrap: true,
@@ -33,9 +33,9 @@ class CategoriesWidget extends ConsumerWidget {
                   );
                 },
                 child: Container(
-                  width: 80, // Fixed width for consistent sizing
+                  width: 80,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16), // Adjusted corner radius
+                    borderRadius: BorderRadius.circular(16), 
                     color: Colors.grey[200],
                   ),
                   child: Column(
@@ -50,7 +50,7 @@ class CategoriesWidget extends ConsumerWidget {
                           width: 60,
                         ),
                       ),
-                      const SizedBox(height: 8), // Spacing between image and text
+                      const SizedBox(height: 8), 
                       Flexible(
                         child: Text(
                           data[index].name.toString(),
@@ -60,7 +60,7 @@ class CategoriesWidget extends ConsumerWidget {
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
                           ),
-                          overflow: TextOverflow.ellipsis, // Prevents overflow
+                          overflow: TextOverflow.ellipsis, 
                         ),
                       ),
                     ],

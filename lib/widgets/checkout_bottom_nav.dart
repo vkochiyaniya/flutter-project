@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pshopapp/controllers/authcontroller.dart';
+import 'package:pshopapp/views/checkoutscreen.dart';
 import 'package:pshopapp/widgets/errortext.dart';
 import 'package:pshopapp/widgets/loader.dart';
 
@@ -20,7 +21,7 @@ class CheckOutBottomNav extends ConsumerWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                     // Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckOutScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckOutScreen()));
                     },
                     child: Container(
                       height: 50,
